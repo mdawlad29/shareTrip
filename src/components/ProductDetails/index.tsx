@@ -19,7 +19,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (productId) {
-      fetch(`https://dummyjson.com/products/${productId}`)
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/products/${productId}`)
         .then((res) => res.json())
         .then((data) => setProductData(data))
         .catch((error) => console.log("Product Error", error));
