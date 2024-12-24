@@ -1,0 +1,189 @@
+// .discount-badge {
+//     position: absolute;
+//     top: 10px;
+//     left: 3px;
+//     background: linear-gradient(90deg, #ff8a00, #ff6600);
+//     color: white;
+//     font-weight: bold;
+//     padding: 4px 20px;
+//     border-radius: 10px 20px 0 10px;
+//     font-size: 14px;
+//     z-index: 10; 
+
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       top: 50%;
+//       left: 0;
+//       border-width: 11px;
+//       border-style: solid;
+//       border-color: transparent transparent #ff8a00 transparent;
+//       rotate: 90deg;
+//     }
+
+//     &::after {
+//       content: "";
+//       position: absolute;
+//       top: 62%;
+//       right: -10px;
+//       border-width: 11px;
+//       border-style: solid;
+//       border-color: transparent transparent #D66F00 transparent;
+//       rotate: 222deg;
+//     }
+
+    
+//   }
+  
+//   .bg-gray-100 {
+//     background-color: #f5f5f5; // Light gray background for the image container
+//   }
+  
+//   .hover\:opacity-100 {
+//     opacity: 1; // Fully visible on hover
+//   }
+  
+//   .opacity-0 {
+//     opacity: 0; // Hidden by default
+//   }
+  
+//   .transition-opacity {
+//     transition: opacity 0.3s ease-in-out; // Smooth fade effect
+//   }
+  
+//   // Styling for product information
+//   .text-gray-500 {
+//     color: #6b7280; // Gray text
+//   }
+  
+//   .text-gray-800 {
+//     color: #1f2937; // Darker gray for the title
+//   }
+  
+//   .text-blue-500 {
+//     color: #3b82f6; // Blue for the price
+//   }
+  
+//   .text-gray-400 {
+//     color: #9ca3af; // Light gray for the old price
+//   }
+  
+//   .line-through {
+//     text-decoration: line-through; // Strikethrough for the old price
+//   }
+  
+//   // Utility for shadow and hover effects
+//   .group:hover .group-hover\:opacity-100 {
+//     opacity: 1; // Ensure hover actions are visible within the group
+//   }
+  
+
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 3px;
+    background: linear-gradient(90deg, #ff8a00, #ff6600);
+    color: white;
+    font-weight: bold;
+    padding: 4px 20px;
+    border-radius: 10px 0 0 10px;
+    font-size: 14px;
+    z-index: 10;
+  
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      border-width: 11px;
+      border-style: solid;
+      border-color: transparent transparent #ff8a00 transparent;
+      rotate: 90deg;
+    }
+  
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   top: 12%;
+    //   right: 0px;
+    //   border-width: 11px;
+    //   border-style: solid;
+    //   border-color: transparent transparent #D66F00 transparent;
+    //   rotate: 220deg;
+    // }
+  }
+  
+  .bg-gray-100 {
+    background-color: #f5f5f5; /* Light gray background for the image container */
+  }
+  
+  .hover\:opacity-100 {
+    opacity: 1; /* Fully visible on hover */
+  }
+  
+  .opacity-0 {
+    opacity: 0; /* Hidden by default */
+  }
+  
+  .transition-opacity {
+    transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
+  }
+  
+  /* Styling for product information (if applicable) */
+  .text-gray-500 {
+    color: #6b7280; /* Gray text */
+  }
+  
+  .text-gray-800 {
+    color: #1f2937; /* Darker gray for the title */
+  }
+  
+  .text-blue-500 {
+    color: #3b82f6; /* Blue for the price */
+  }
+  
+  .text-gray-400 {
+    color: #9ca3af; /* Light gray for the old price */
+  }
+  
+  .line-through {
+    text-decoration: line-through; /* Strikethrough for the old price */
+  }
+  
+  /* Utility for shadow and hover effects */
+  .group:hover .group-hover\:opacity-100 {
+    opacity: 1; /* Ensure hover actions are visible within the group */
+  }
+
+
+
+  .k-design {
+    position: relative;
+    width: 50px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+    background-color: transparent; /* Dark background color */
+  }
+  
+  .k-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #f6b56b; /* Light orange */
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  
+  .k-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 10%;
+    background: linear-gradient(135deg, transparent 50%, #d6751e 50%);
+    border-bottom-right-radius: 6px;
+  }
+  

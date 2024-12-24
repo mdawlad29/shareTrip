@@ -6,16 +6,11 @@ export const productService = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://dummyjson.com/docs",
   }),
-  keepUnusedDataFor: 0,
-  refetchOnFocus: true,
-  refetchOnReconnect: true,
   endpoints: (builder) => ({
     getProducts: builder.query<void, Error>({
       query: () => ({
         url: "/products",
         method: "GET",
-        cache: "no-cache",
-        keepUnusedDataFor: 0,
       }),
     }),
   }),

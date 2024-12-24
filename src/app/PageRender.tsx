@@ -1,6 +1,6 @@
 "use client";
 
-import { ConfigProvider, Spin } from "antd";
+import { ConfigProvider, Spin,  } from "antd";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
@@ -19,7 +19,7 @@ const PageRender = ({ children }: { children: React.ReactNode }) => {
         token: { fontFamily: "'Inter', sans-serif" },
       }}
     >
-      {isLoading ? <Spin /> : children}
+      {isLoading ? <div className="flex justify-center items-center h-screen"><Spin/></div> : children}
       <ToastContainer position="top-right" autoClose={1000} />
     </ConfigProvider>
   );
