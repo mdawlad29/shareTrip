@@ -1,6 +1,6 @@
 "use client";
 
-import { Row, Col, Spin } from "antd";
+import { Row, Col } from "antd";
 import React, { useEffect, useState } from "react";
 import CartDesign from "../shared/CartDesign";
 import Loader from "../shared/Loader";
