@@ -1,10 +1,13 @@
 import { Button, Typography } from 'antd'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { MdAddShoppingCart, MdFavoriteBorder, MdVisibility } from 'react-icons/md'
 const {Text}=Typography
 
 interface ICartProps{
+    id:number
     title:string
     image:string
     price:number
@@ -12,9 +15,11 @@ interface ICartProps{
     description:string
 }
 
-const CartDesign:React.FC<ICartProps> = ({description,discount,price,title,image}) => {
+const CartDesign:React.FC<ICartProps> = ({description,discount,price,title,image,id}) => {
+const router=useRouter()
+
   return (
-    <div className="bg-white rounded-xl h-[370px] border overflow-hidden group hover:shadow-md duration-300 relative hover:p-1">
+    <div className="bg-white rounded-xl h-[370px] overflow-hidden group hover:shadow-md duration-300 relative hover:p-1">
 
     {/* Discount Badge */}
     {discount&&<div className="relative">
@@ -50,7 +55,7 @@ const CartDesign:React.FC<ICartProps> = ({description,discount,price,title,image
           Add to Cart
         </Button>
       
-        <Button
+        <Button  onClick={()=>router.push(`/product/${id}`)}
           className="flex items-center gap-2 px-14 py-[6px] !bg-[#ffffff4d] !text-white rounded-lg text-sm font-medium border !border-white hover:bg-white transition"
           icon={<MdVisibility className="text-[18px]"/>}
         >
@@ -60,7 +65,7 @@ const CartDesign:React.FC<ICartProps> = ({description,discount,price,title,image
     </div>
 
     {/* Product Info */}
-    <div className="p-4">
+    <Link href={`/product/${id}`} className="p-2 block">
       <Text className="text-gray-500 text-sm font-medium block">{title}</Text>
       
       <Text className="text-gray-800 text-base font-semibold mb-2 block">
@@ -68,11 +73,11 @@ const CartDesign:React.FC<ICartProps> = ({description,discount,price,title,image
       </Text>
 
       <div className="flex items-center gap-4">
-        <Text className="text-blue-500 text-lg font-bold">৳{price}</Text>
+        <Text className="text-[#1882FF] text-lg font-bold">৳{price}</Text>
 
-        <Text className="text-gray-400 text-sm line-through">৳2,500</Text>
+        <Text className="text-[#77818C] text-sm line-through">৳2,500</Text>
       </div>
-    </div>
+    </Link>
   </div>
   )
 }

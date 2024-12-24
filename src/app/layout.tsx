@@ -3,6 +3,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "../scss/main.scss";
 import PageRender from "./PageRender";
 import { Providers } from "@/redux/provider";
+import Navbar from "@/components/partials/Header";
+import Footers from "@/components/partials/Footer";
 
 export const metadata: Metadata = {
   title: "ShareTrip",
@@ -18,7 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`} suppressHydrationWarning={true}>
         <Providers>
-          <PageRender>{children}</PageRender>
+          <PageRender>
+            <Navbar/>
+              {children}
+            <Footers/>
+          </PageRender>
         </Providers>
       </body>
     </html>
