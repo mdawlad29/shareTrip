@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IProductSlice {
-  cartItems: any[]|null;
+  cartItems: [];
 }
 
 const initialState: IProductSlice = {
-  cartItems: null,
+  cartItems: [],
 };
 
 const productSlice = createSlice({

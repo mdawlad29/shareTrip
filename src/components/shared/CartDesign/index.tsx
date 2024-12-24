@@ -5,8 +5,10 @@ import { Button, Typography } from 'antd'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import {  AiOutlinePlus } from 'react-icons/ai'
 import { MdAddShoppingCart, MdFavoriteBorder, MdVisibility } from 'react-icons/md'
+import { RiDeleteBin6Line } from 'react-icons/ri'
 import { toast } from 'react-toastify'
 const {Text}=Typography
 
@@ -24,11 +26,23 @@ const router=useRouter()
 const dispatch=useAppDispatch()
 const {cartItems}=useAppSelector((state:RootState)=>state.product)
 
+const [isInCart, setIsInCart] = useState(false);
+
+useEffect(() => {
+  if (cartItems?.some((cartItem: any) => cartItem.id === item.id)) {
+    setIsInCart(true);
+  } else {
+    setIsInCart(false);
+  }
+}, [cartItems, item.id]);
+
 const handleAddToCart = () => {
   try {
-    const currentCart = Array.isArray(cartItems) ? cartItems : []; 
+    const currentCart = Array.isArray(cartItems) ? cartItems : [];
 
-    const existingItem = currentCart.find((cartItem) => cartItem.id === item.id);
+    const existingItem = currentCart.find(
+      (cartItem) => cartItem.id === item.id
+    );
 
     if (existingItem) {
       dispatch(
@@ -40,17 +54,33 @@ const handleAddToCart = () => {
           )
         )
       );
-    return  toast?.warn(`${item.title} quantity updated in the cart.`);
+      toast?.warn(`${item.title} quantity updated in the cart.`);
     } else {
       dispatch(setCartItems([...currentCart, { ...item, quantity: 1 }]));
-    return  toast?.success(`${item.title} added to the cart successfully!`);
+      toast?.success(`${item.title} added to the cart successfully!`);
+      setIsInCart(true); // Set state to true after adding
     }
-  } catch (error) {
-   return toast?.error("An error occurred while adding the item to the cart.");
-    console.error("Add to Cart Error:", error);
+  } catch (error: any) {
+    toast?.error("An error occurred while adding the item to the cart.");
   }
 };
 
+const handleRemoveItem = (id: any) => {
+  const updatedCart = cartItems?.filter((cartItem: any) => cartItem.id !== id);
+  dispatch(setCartItems(updatedCart));
+  setIsInCart(false); // Reset state after removal
+  toast?.success("Item removed from the cart successfully!");
+};
+
+  const onIncrease = (id: any) => {
+    const updatedCart = cartItems?.map((cartItem: any) =>
+      cartItem.id === id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+    dispatch(setCartItems(updatedCart));
+    return toast?.success("Item quantity updated in the cart successfully!");
+  };
 
 
   return (
@@ -83,12 +113,34 @@ const handleAddToCart = () => {
       <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-24 rounded-xl">
         <MdFavoriteBorder className="text-white text-[24px] hover:text-red-500 cursor-pointer absolute top-4 right-4" />
 
-        <Button onClick={handleAddToCart}
-          className="flex items-center gap-2 px-14 py-[6px] !bg-[#ffffff4d] !text-white rounded-lg text-sm font-medium border !border-white hover:bg-white transition"
-          icon={<MdAddShoppingCart className="text-[18px]"/>}
-        >
-          Add to Cart
-        </Button>
+        
+          {!isInCart ? (
+            <Button
+              onClick={handleAddToCart}
+              className="flex items-center gap-2 px-14 py-[6px] !bg-[#ffffff4d] !text-white rounded-lg text-sm font-medium border !border-white hover:bg-white transition"
+              icon={<MdAddShoppingCart className="text-[18px]" />}
+            >
+              Add to Cart
+            </Button>
+          ) : (
+            <Button
+              className="flex items-center gap-2 px-7 py-[6px] !bg-[#03A629] !text-white rounded-lg text-sm font-medium border !border-white hover:bg-white transition"
+            >
+              <RiDeleteBin6Line
+                size={20}
+                onClick={() => handleRemoveItem(item?.id)}
+                className="cursor-pointer"
+              /> 
+              {cartItems.find((cartItem: any) => cartItem.id === item.id)?.quantity ?? 0}{" "}
+              Added in Cart
+              <AiOutlinePlus
+                size={20}
+                onClick={() => onIncrease(item?.id)}
+                className="cursor-pointer"
+              />
+            </Button>
+          )}
+
       
         <Button  onClick={()=>router.push(`/product/${item?.id}`)}
           className="flex items-center gap-2 px-14 py-[6px] !bg-[#ffffff4d] !text-white rounded-lg text-sm font-medium border !border-white hover:bg-white transition"

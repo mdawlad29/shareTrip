@@ -2,12 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { RootState } from "@/redux/store";
 import { Button, Col, Row, Typography } from "antd";
 import { setCartItems } from "@/redux/feature/product/productSlice";
 import { toast } from "react-toastify";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const CartDetails = () => {
   const dispatch = useAppDispatch();
@@ -110,7 +111,7 @@ const CartDetails = () => {
                   onClick={() => handleRemoveCart(item.id)}
                   className="text-red-500 hover:text-red-700"
                 >
-                  <AiOutlineDelete size={20} />
+                  <RiDeleteBin6Line size={20} />
                 </button>
               </div>
             )):<><Typography.Text className="text-lg text-red-500 block text-center">No item found in the cart.</Typography.Text></>}
