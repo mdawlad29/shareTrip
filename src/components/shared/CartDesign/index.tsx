@@ -58,7 +58,7 @@ const handleAddToCart = () => {
     } else {
       dispatch(setCartItems([...currentCart, { ...item, quantity: 1 }]));
       toast?.success(`${item.title} added to the cart successfully!`);
-      setIsInCart(true); // Set state to true after adding
+      setIsInCart(true); 
     }
   } catch (error: any) {
     toast?.error("An error occurred while adding the item to the cart.");
@@ -68,7 +68,7 @@ const handleAddToCart = () => {
 const handleRemoveItem = (id: any) => {
   const updatedCart = cartItems?.filter((cartItem: any) => cartItem.id !== id);
   dispatch(setCartItems(updatedCart));
-  setIsInCart(false); // Reset state after removal
+  setIsInCart(false); 
   toast?.success("Item removed from the cart successfully!");
 };
 

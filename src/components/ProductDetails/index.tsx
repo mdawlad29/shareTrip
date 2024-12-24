@@ -7,6 +7,7 @@ import { IoMdAdd } from 'react-icons/io'
 import { IoArrowBackOutline } from 'react-icons/io5'
 import { RiSubtractFill } from 'react-icons/ri'
 import Loader from '../shared/Loader'
+import { toast } from 'react-toastify'
 
 const ProductDetails = () => {
   const router = useRouter();
@@ -37,6 +38,10 @@ const ProductDetails = () => {
   const handleDecrement = () => {
     setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1)); 
   };
+
+  const handlePlaceOrder = () => {
+      return toast?.warn("Please order feature is not available yet!");
+    }
 
   const totalPrice = productData?.price * count;
 
@@ -95,7 +100,7 @@ const ProductDetails = () => {
                 />
               </div>
 
-              <Button className='w-full !bg-[#1882FF] !text-white text-[16px] h-9 flex justify-center items-center'>Place Order</Button>
+              <Button onClick={handlePlaceOrder} className='w-full !bg-[#1882FF] !text-white text-[16px] h-9 flex justify-center items-center'>Place Order</Button>
             </div>
           </div>
         </div>

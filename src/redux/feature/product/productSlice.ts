@@ -17,12 +17,14 @@ const productSlice = createSlice({
     setCartItems:(state,action) => {
       state.cartItems = action.payload;
     },
+
+   
   },
 });
 
 export const {
   clearProduct,
-  setCartItems
+  setCartItems,
 } = productSlice.actions;
 
 export default productSlice.reducer;

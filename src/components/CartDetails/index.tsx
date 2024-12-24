@@ -30,6 +30,8 @@ const CartDetails = () => {
         : cartItem
     );
     dispatch(setCartItems(updatedCart));
+
+    return toast?.success("Item quantity updated in the cart successfully!");
   };
 
   // Decrease Quantity
@@ -41,8 +43,13 @@ const CartDetails = () => {
     );
     dispatch(setCartItems(updatedCart));
    
+    return toast?.success("Item quantity removed in the cart successfully!");
   };
 
+  const handleCheckout = () => {
+    return toast?.warn("Checkout feature is not available yet!");
+  }
+  
 
   return (
     <div className="container mx-auto px-4 my-10">
@@ -150,7 +157,7 @@ const CartDetails = () => {
               </span>
             </div>
 
-            <Button className="mt-6 w-full !bg-blue-500 !text-white py-2 rounded-lg !border-none">
+            <Button onClick={handleCheckout} className="mt-6 w-full h-9 flex justify-center items-center !bg-blue-500 !text-white py-2 rounded-lg !border-none">
               Proceed to Checkout
             </Button>
           </div>
