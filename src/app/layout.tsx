@@ -20,11 +20,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`} suppressHydrationWarning={true}>
         <Providers>
-          <PageRender>
+            <PageRender>
             <Navbar/>
+            <div className="min-h-screen">
               {children}
+            </div>
             <Footers/>
-          </PageRender>
+            </PageRender>
         </Providers>
       </body>
     </html>

@@ -1,9 +1,5 @@
-import dynamic from "next/dynamic";
+import Products from "@/components/Products";
 
-
-const Products = dynamic(
-  () => import("@/components/Products")
-);
 
 export default function Home() {
   return (

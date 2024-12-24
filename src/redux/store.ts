@@ -9,12 +9,10 @@ import {
 } from "redux-persist";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
-import helperReducer from "./feature/helper/helperSlice";
 import productReducer from "./feature/product/productSlice";
 import { productService } from "@/services/product.service";
 
 const combinedReducer = combineReducers({
-  helper: helperReducer,
   product:productReducer,
 
 
@@ -24,7 +22,7 @@ const combinedReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  // whitelist: [],
+  whitelist: ["product"],
   blacklist: [],
 };
 

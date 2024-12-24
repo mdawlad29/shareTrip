@@ -41,7 +41,7 @@ const ProductDetails = () => {
   const totalPrice = productData?.price * count;
 
   return (
-    <div>
+    
       <div className="flex flex-col container mx-auto shadow rounded-[10px] overflow-hidden my-10">
         <button
           className="text-[#1882FF] mb-4 flex items-center gap-2 border-b w-full p-3"
@@ -76,7 +76,7 @@ const ProductDetails = () => {
               </div>
 
               <Typography.Text className="text-gray-800 text-2xl mb-4 block font-medium">
-                ৳ {totalPrice}
+                ৳ {totalPrice?.toFixed(2)}
               </Typography.Text>
 
               <div className="flex space-x-7 items-center mb-10">
@@ -95,7 +95,7 @@ const ProductDetails = () => {
                 />
               </div>
 
-              <Button className='w-full !bg-[#1882FF] rounded-full !text-white text-[16px] h-9 flex justify-center items-center'>Place Order</Button>
+              <Button className='w-full !bg-[#1882FF] !text-white text-[16px] h-9 flex justify-center items-center'>Place Order</Button>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ const ProductDetails = () => {
             }
         </div>}
       </div>
-    </div>
+    
   );
 };
 

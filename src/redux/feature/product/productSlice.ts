@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IProductSlice {
-  isLoading: boolean;
+  cartItems: any[]|null;
 }
 
 const initialState: IProductSlice = {
-  isLoading: false,
+  cartItems: null,
 };
 
 const productSlice = createSlice({
@@ -14,12 +14,15 @@ const productSlice = createSlice({
   reducers: {
     clearProduct: () => initialState,
 
-    
+    setCartItems:(state,action) => {
+      state.cartItems = action.payload;
+    },
   },
 });
 
 export const {
   clearProduct,
+  setCartItems
 } = productSlice.actions;
 
 export default productSlice.reducer;

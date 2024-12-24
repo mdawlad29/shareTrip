@@ -24,7 +24,7 @@ const Products = () => {
       <Row gutter={[16, 16]}>
         {productData?.length>0?productData?.map((item:any, index) => (
           <Col key={index} xs={24} md={12} lg={6}>
-            <CartDesign key={item.id} id={item?.id} description={item.description?.slice(0,80)} discount={item.discountPercentage} price={item.price} title={item.title?.slice(0,30)} image={item.images[0]}/>
+            <CartDesign key={item.id} item={item} description={item.description?.slice(0,80)} discount={item.discountPercentage} price={item.price} title={item.title?.slice(0,30)} image={item.images[0]}/>
           </Col>
         )):<Loader/>}
       </Row>
