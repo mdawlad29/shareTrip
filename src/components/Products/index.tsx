@@ -11,7 +11,7 @@ const Products = () => {
 
   useEffect(() => {
     try {
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/products`)
+      fetch('https://dummyjson.com/products')
       .then(res => res.json())
       .then(data => setProductData(data.products));
     } catch (error) {
